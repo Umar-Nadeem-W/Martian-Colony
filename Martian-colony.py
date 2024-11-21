@@ -12,22 +12,29 @@ Colonies = np.array([
 
 Eventsholder =np.array([1,2,3,4])
 
-Names =['Norse Vikings','Desert Bandits','Caribben Pirates','Amazon Warriors']  
+Names =['Norse Vikings','Desert Bandits','Caribbean Pirates','Amazon Warriors']  
 
 def pick_events():
-  e1=  np.random.randint(0,3)
-  e2=  e1
-  e3 = np.random.randint(0,3)
-  while(e3 == e1):
-     e3 = np.random.randint(0,3)
-  e4 = np.random.randint(0,3)
-  while(e4 == e1 or e4 == e3):
-     e4 = np.random.randint(0,3)
+  e1 = 0
+  e2 =1
+  e3 =2 
+  e4 =3
+
+  e1=  np.random.randint(0,4)
+  e2 =np.random.randint(0,4)
+  while(e2 == e1):
+     e2 = np.random.randint(0,4)
+  e3 = np.random.randint(0,4)
+  while(e3 == e1 or e3 == e2):
+     e3 = np.random.randint(0,4)
+  e4 = np.random.randint(0,4)
+  while(e4 == e1 or e4 == e3 or e4==e2):
+     e4 = np.random.randint(0,4)
      
-     Eventsholder[0] = e1
-     Eventsholder[1] = e2
-     Eventsholder[2] = e3
-     Eventsholder[3] = e4
+  Eventsholder[e1] = 0
+  Eventsholder[e2] = 0
+  Eventsholder[e3] = 1
+  Eventsholder[e4] = 2
 
 def assignEvents():
    for i in range(0, Colonies.shape[0]):
@@ -101,12 +108,12 @@ def Round(num):
    Storm(Colonies[stormcolony])
    Resource_Growth(Colonies[rgcolony])
 
-   print(f"After round {num}, the resources stand as follows:")
+   print(f"After round {num + 1}, the resources stand as follows:")
 
-   print(Names[0], ": ", Colonies[0, 0:5])
-   print(Names[1], ": ", Colonies[1, 0:5])
-   print(Names[2], ": ", Colonies[2, 0:5])
-   print(Names[3], ": ", Colonies[3, 0:5])
+   print(Names[0], ": ", Colonies[0, 0:4], " Total = ", Colonies[0,0:4].sum() ) 
+   print(Names[1], ": ", Colonies[1, 0:4], " Total = ", Colonies[1,0:4].sum() )
+   print(Names[2], ": ", Colonies[2, 0:4], " Total = ", Colonies[2,0:4].sum() )
+   print(Names[3], ": ", Colonies[3, 0:4], " Total = ", Colonies[3,0:4].sum() )
  
    print("\n\n\n")
 
